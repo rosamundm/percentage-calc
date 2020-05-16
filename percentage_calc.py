@@ -15,28 +15,37 @@ class mainWindow(QWidget):
         # WIDGETS
         self.welcomeLabel = QLabel("Welcome!\nLet's find some percentages.")
         # for functionA:
-        self.label1 = QLabel("x% of y = z")
-        self.button1 = QPushButton("Go")
+        self.button1 = QPushButton("x% of y = z")
         # for functionB:
-        self.label2 = QLabel("x is y% of z")
-        self.button2 = QPushButton("Go")
+        self.button2 = QPushButton("z = x% of y")
 
         grid = QGridLayout()
         grid.addWidget(self.welcomeLabel, 0, 0)
-        grid.addWidget(self.label1, 1, 0)
-        grid.addWidget(self.button1, 2, 0)
-        grid.addWidget(self.label2, 4, 0)
-        grid.addWidget(self.button2, 5, 0)
+        grid.addWidget(self.button1, 1, 0)
+        grid.addWidget(self.button2, 2, 0)
 
         self.setLayout(grid)
         self.show()
 
-        self.button1.clicked.connect(self.openNew)
+        self.button1.clicked.connect(self.openNew) # lambda?
         self.button2.clicked.connect(self.openNew)
 
+        def openNew(self):
+            self.n = newWindow()
+            self.n.show()
 
+class functionAWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.resize(200, 150)
+        self.setWindowTitle("Find Percentage")
+        self.newWindowLabel1 = QLabel("x% of y = z")
+        self.field1 = QLineEdit("Enter a decimal:")
+        self.field2 = QLineEdit("Enter your number")
+        self.label1 = QLabel("Your result:")
+        self.result1 = QLabel()
 
-""" Einrückung??
+        # labels / text fields for each function
 
     def functionA():
             x = text1.text()
@@ -45,50 +54,24 @@ class mainWindow(QWidget):
             return z
 
 
+class functionBWindow(QtWidget):
+    def __init__(self):
+        super().__init__()
+        self.resize(200, 150)
+        self.setWindowTitle("Find Percentage")
+        self.newWindowLabel2 = QLabel("z = x% of y")
+        self.field3 = QLineEdit("Enter the first number (z):")
+        self.field4 = QLineEdit("Enter the second number (y):")
+        self.label2 = QLabel("Your result:")
+        self.result2 = QLabel()
+
     def functionB():
             a = text3.text()
             c = text3.text()
             b.setText(str(float(a) * 100 / c))
             return b
-"""
-
-    def openNew(self):
-        self.n = newWindow()
-        self.n.show()
 
 
-# define separate classes according to function
-class newWindow(QWidget):
-    def __init__(self):
-        super().__init__()
-
-        self.resize(200, 150)
-        self.setWindowTitle("Title")
-
-        self.newWindowLabel = QLabel("Here is some text")
-
-        # labels / text fields for each function
-
-"""
-# functionA:
-
-# x (decimal percentage) of y = z
-def percent_of_is(xfloat, y):
-    z = xfloat * y
-    return z
-
-print(percent_of_is(0.25, 30))
-
-
-# functionB:
-# x is percentage% of y
-def is_percent_of(x, y):
-    percentage = x * 100 / y
-    return percentage
-
-print(is_percent_of(1, 4))
-
-"""
 
 
 

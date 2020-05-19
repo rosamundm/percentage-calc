@@ -1,1 +1,2 @@
-# Find X if P percent of it is Y
+* add functionC
+* add stylesheet
